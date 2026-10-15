@@ -9,7 +9,6 @@ const UsersLayout = ({children}: Props) => {
   return (
       <div>
         <hr/>
-        users layout
         {children}
         <hr/>
       </div>

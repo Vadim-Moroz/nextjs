@@ -7,13 +7,22 @@ export const Menu = () => {
                 <Link href="/">home</Link>
             </li>
             <li>
-                <Link href="/about">about</Link>
-            </li>
-            <li>
-                <Link href="/contacts">contacts</Link>
-            </li>
-            <li>
                 <Link href="/users">users</Link>
+            </li>
+            <li>
+                <Link href="/users/1">user</Link>
+            </li>
+            <li>
+                <Link href="/posts">posts</Link>
+            </li>
+            <li>
+                <Link href="/posts/1">post</Link>
+            </li>
+            <li>
+                <Link href="/comments">comments</Link>
+            </li>
+            <li>
+                <Link href="/comments/1">comment</Link>
             </li>
         </ul>
     );

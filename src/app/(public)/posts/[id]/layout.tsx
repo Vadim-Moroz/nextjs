@@ -2,18 +2,18 @@ import React from 'react';
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
-  title: 'ContactsLayout metadata'
+  title: 'PostLayout metadata'
 }
+
 type Props = { children: React.ReactNode }
-const ContactsLayout = ({children}: Props) => {
+const PostLayout = ({children}: Props) => {
   return (
       <div>
         <hr/>
-        Contacts layout
         {children}
         <hr/>
       </div>
   );
 };
 
-export default ContactsLayout;
+export default PostLayout;

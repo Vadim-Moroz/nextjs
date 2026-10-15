@@ -1,5 +1,6 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Metadata} from "next";
+import SingleUserComponent from "@/src/components/user-component/SingleUserComponent";
 
 type Props = {
     params: {id: string }
@@ -10,13 +11,11 @@ export const  generateMetadata= async ({params}:Props):Promise<Metadata> => {
         title: `Users page title ${id}`,
     }
 }
-const UserPage:FC<Props> = async ({params}) => {
+const UserPage = async () => {
 
-    const {id} = await params
-    console.log(id);
     return (
         <div>
-            user page {id}
+            <SingleUserComponent/>
         </div>
     );
 };

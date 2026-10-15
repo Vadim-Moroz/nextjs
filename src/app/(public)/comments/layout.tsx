@@ -2,18 +2,17 @@ import React from 'react';
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
-  title: 'AboutLayout metadata'
+  title: 'CommentsLayout metadata'
 }
 type Props = { children: React.ReactNode }
-const AboutLayout = ({children}: Props) => {
+const CommentsLayout = ({children}: Props) => {
   return (
       <div>
         <hr/>
-        about layout
         {children}
         <hr/>
       </div>
   );
 };
 
-export default AboutLayout;
+export default CommentsLayout;
