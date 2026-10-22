@@ -1,14 +1,11 @@
-"use client"
-import React, {useEffect, useState} from 'react';
+"use server"
+import React from 'react';
 import {getAll} from "@/src/services/api.service";
 import {IComment} from "@/src/models/IComment";
 import CommentComponent from "@/src/components/comment-component/CommentComponent";
 
-const CommentsComponent = () => {
-    const [comments,setComment] = useState<IComment[]>([])
-    useEffect(() => {
-        getAll<IComment[]>("/comments").then(value => setComment(value))
-    },[])
+const CommentsComponent =async () => {
+    const comments =await getAll<IComment[]>('/comments');
     return (
         <div>
             {comments.map(comment=><CommentComponent key={comment.id} comment={comment}/>)}

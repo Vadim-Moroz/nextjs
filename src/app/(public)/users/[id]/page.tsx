@@ -3,7 +3,7 @@ import {Metadata} from "next";
 import SingleUserComponent from "@/src/components/user-component/SingleUserComponent";
 
 type Props = {
-    params: {id: string }
+    params: Promise<{ id: string }>
 }
 export const  generateMetadata= async ({params}:Props):Promise<Metadata> => {
     const {id} = await params;

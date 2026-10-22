@@ -1,13 +1,10 @@
-"use client"
-import React, {useEffect, useState} from 'react';
+"use server"
+import React from 'react';
 import {IUser} from "@/src/models/IUser";
 import {getById} from "@/src/services/api.service";
 
-const SingleUserComponent = () => {
-    const [user,setUser] = useState<IUser>()
-    useEffect(() => {
-        getById<IUser>("/users",'1').then(value => setUser(value))
-    },[])
+const SingleUserComponent = async () => {
+    const user =await getById<IUser>('/users','1');
     return (
         <div>
             {user?.username}

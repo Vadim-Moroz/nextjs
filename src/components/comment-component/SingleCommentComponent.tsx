@@ -1,13 +1,11 @@
-"use client"
-import React, {useEffect, useState} from 'react';
+"use server"
+import React from 'react';
 import {getById} from "@/src/services/api.service";
 import {IComment} from "@/src/models/IComment";
 
-const SingleCommentComponent = () => {
-    const [comment,setComment] = useState<IComment>()
-    useEffect(() => {
-        getById<IComment>("/comments",'1').then(value => setComment(value))
-    },[])
+const SingleCommentComponent =async () => {
+    const comment =await getById<IComment>("/comments",'1')
+
     return (
         <div>
             {comment?.name}

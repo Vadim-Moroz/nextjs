@@ -1,14 +1,11 @@
-"use client"
-import React, {useEffect, useState} from 'react';
+"use server"
+import React from 'react';
 import {IUser} from "@/src/models/IUser";
 import UserComponent from "@/src/components/user-component/UserComponent";
 import {getAll} from "@/src/services/api.service";
 
-const UsersComponent = () => {
-    const [users,setUser] = useState<IUser[]>([])
-    useEffect(() => {
-        getAll<IUser[]>("/users").then(value => setUser(value))
-    },[])
+const UsersComponent = async () => {
+    const users =await getAll<IUser[]>('/users');
     return (
         <div>
             {users.map(user=><UserComponent key={user.id} user={user}/>)}
