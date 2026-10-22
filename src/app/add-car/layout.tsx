@@ -9,7 +9,7 @@ const AboutLayout = ({children}: Props) => {
   return (
       <div>
         <hr/>
-        about layout
+        Add car
         {children}
         <hr/>
       </div>
