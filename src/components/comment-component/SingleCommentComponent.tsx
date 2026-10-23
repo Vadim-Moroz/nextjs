@@ -3,12 +3,19 @@ import React from 'react';
 import {getById} from "@/src/services/api.service";
 import {IComment} from "@/src/models/IComment";
 
-const SingleCommentComponent =async () => {
-    const comment =await getById<IComment>("/comments",'1')
+type Props = {
+    id: string;
+};
+
+const SingleCommentComponent =async ({id}:Props) => {
+    const comment =await getById<IComment>("/comments",id)
 
     return (
         <div>
-            {comment?.name}
+            <h1>{comment?.name}</h1>
+            <p>{comment?.body}</p>
+            <p>Email автора: {comment?.email}</p>
+            <hr/>
         </div>
     );
 };

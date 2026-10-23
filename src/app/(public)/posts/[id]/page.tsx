@@ -3,7 +3,7 @@ import {Metadata} from "next";
 import SinglePostComponent from "@/src/components/post-component/SinglePostComponent";
 
 type Props = {
-    params: {id: string }
+    params: Promise<{ id: string }>
 }
 export const  generateMetadata= async ({params}:Props):Promise<Metadata> => {
     const {id} = await params;
@@ -11,10 +11,11 @@ export const  generateMetadata= async ({params}:Props):Promise<Metadata> => {
         title: `Post page title ${id}`,
     }
 }
-const PostPage = async () => {
+const PostPage = async ({params}:Props) => {
+    const {id} = await params;
     return (
         <div>
-            <SinglePostComponent/>
+            <SinglePostComponent id={id}/>
         </div>
     );
 };

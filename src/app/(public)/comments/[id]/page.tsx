@@ -3,7 +3,7 @@ import {Metadata} from "next";
 import SingleCommentComponent from "@/src/components/comment-component/SingleCommentComponent";
 
 type Props = {
-    params: {id: string }
+    params: Promise<{ id: string }>
 }
 export const  generateMetadata= async ({params}:Props):Promise<Metadata> => {
     const {id} = await params;
@@ -11,11 +11,11 @@ export const  generateMetadata= async ({params}:Props):Promise<Metadata> => {
         title: `Comment page title ${id}`,
     }
 }
-const CommentPage= async () => {
-
+const CommentPage= async ({params}:Props) => {
+    const {id} = await params;
     return (
         <div>
-            <SingleCommentComponent/>
+            <SingleCommentComponent id={id}/>
         </div>
     );
 };

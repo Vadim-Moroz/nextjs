@@ -11,11 +11,11 @@ export const  generateMetadata= async ({params}:Props):Promise<Metadata> => {
         title: `Users page title ${id}`,
     }
 }
-const UserPage = async () => {
-
+const UserPage = async ({params}:Props) => {
+    const {id} = await params;
     return (
         <div>
-            <SingleUserComponent/>
+            <SingleUserComponent id={id}/>
         </div>
     );
 };

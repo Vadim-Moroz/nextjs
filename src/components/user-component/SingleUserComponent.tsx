@@ -3,11 +3,17 @@ import React from 'react';
 import {IUser} from "@/src/models/IUser";
 import {getById} from "@/src/services/api.service";
 
-const SingleUserComponent = async () => {
-    const user =await getById<IUser>('/users','1');
+type Props = {
+    id: string;
+};
+
+const SingleUserComponent = async ({id}:Props) => {
+    const user =await getById<IUser>('/users',id);
     return (
         <div>
-            {user?.username}
+            <h1>{user?.name}</h1>
+            <p>{user?.username}</p>
+            <p>{user?.email}</p>
         </div>
     );
 };

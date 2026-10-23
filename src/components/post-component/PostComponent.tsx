@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {IPost} from "@/src/models/IPost";
+import Link from "next/link";
 
 type PostPropsType ={
     post:IPost
@@ -7,7 +8,8 @@ type PostPropsType ={
 const PostComponent:FC<PostPropsType> = ({post}) => {
     return (
         <div>
-            {post.title}
+            <Link href={`posts/${post.id}`}>{post.title}</Link>
+            <hr/>
         </div>
     );
 };

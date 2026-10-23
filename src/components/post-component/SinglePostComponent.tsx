@@ -3,11 +3,17 @@ import React from 'react';
 import {getById} from "@/src/services/api.service";
 import {IPost} from "@/src/models/IPost";
 
-const SinglePostComponent = async () => {
-    const post =await getById<IPost>("/posts",'1')
+type Props = {
+    id: string;
+};
+
+const SinglePostComponent = async ({id}:Props) => {
+    const post =await getById<IPost>("/posts",id)
     return (
         <div>
-            {post?.title}
+            <h1>{post?.title}</h1>
+            <p>{post?.body}</p>
+            <hr/>
         </div>
     );
 };
