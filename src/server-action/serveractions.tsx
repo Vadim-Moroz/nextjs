@@ -1,6 +1,6 @@
 "use server"
-import {carSchema} from "@/lib/schema";
 import {AddCar} from "@/src/services/api.service";
+import {carValidation} from "@/src/validation/validation";
 
 export const addCar = async (fromdata:FormData):Promise<void>=>{
     const data={
@@ -8,11 +8,11 @@ export const addCar = async (fromdata:FormData):Promise<void>=>{
         price:Number(fromdata.get('price')),
         year:Number(fromdata.get('year')),
     }
-    const result = carSchema.safeParse(data)
-    if (!result.success) {
+    const result = carValidation.validate(data)
+    if (result.error) {
         console.log(result.error)
         return
     }
-    console.log(result.data)
-    await AddCar(result.data)
+    console.log(result.value)
+    await AddCar(result.value)
 }
