@@ -12,19 +12,34 @@ type FormDataType = {
 
 const AddCarPage = () => {
 
-    const custom = ()=>{
+    const custom=async (data:FormDataType)=>{
         console.log("AddCarPage called");
+
+        const formData = new FormData();
+
+        formData.append("brand", data.brand);
+        formData.append("price", String(data.price));
+        formData.append("year", String(data.year));
+
+        const result = await addCar(formData);
+        if (result.success) {
+            reset();
+            alert("Successfully added");
+        }else{
+            alert("Something went wrong");
+        }
     }
     const {
         register,
         handleSubmit,
+        reset,
         formState: {errors},
         } = useForm<FormDataType>({
         mode: "all", resolver: joiResolver(carValidation)
     })
     return (
         <div>
-            <form action={addCar} onSubmit={handleSubmit(custom)}>
+            <form onSubmit={handleSubmit(custom)}>
                 <div>
                     <input type="text" {...register("brand")} placeholder={"brand"}/>
                     {errors.brand && <p>{errors.brand.message}</p>}
