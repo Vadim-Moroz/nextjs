@@ -14,6 +14,13 @@ export const addCar = async (formData:FormData)=>{
         return {success: false}
     }
     console.log(result.value)
-    await AddCar(result.value)
-    return {success: true}
+    try {
+        await AddCar(result.value)
+        return {success: true}
+    }catch(error){
+        console.error("Failed to add car:", error);
+        return {success: false}
+    }
+
+
 }

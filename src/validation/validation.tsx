@@ -5,10 +5,12 @@ export const carValidation = Joi.object({
         "string.min":"Min 1 char",
         "string.max":"Max 20 char",
         "string.pattern.base":"Only chars are allowed",}),
-    price: Joi.number().required().min(0).max(1000000).messages({
+    price: Joi.number().integer().required().min(0).max(1000000).messages({
+        "number.integer": "Price must be an integer",
         "number.min": "Min price is 0",
         "number.max": "Maximum price is 1000000"}),
-    year: Joi.number().required().min(1990).max(2026).messages({
+    year: Joi.number().integer().required().min(1990).max(2026).messages({
+        "number.integer": "Price must be an integer",
         "number.min":"Min year is 1990",
         "number.max":"Max year is 2026"
     }),
